@@ -47,7 +47,7 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-[60vh] mt-4 flex flex-col justify-center items-center">
+    <div className="lg:min-h-[80vh] min-h-[50vh] mt-4 flex flex-col justify-center items-center">
       <h1 className="lg:text-6xl text-3xl font-bold text-center tracking-tight">
         Ask Silly Questions that increases your Twitter Engagements!
       </h1>

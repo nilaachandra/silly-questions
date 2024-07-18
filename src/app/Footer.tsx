@@ -4,6 +4,8 @@ const Footer = () => {
   return (
     <footer className="w-full mt-4 flex items-start justify-between lg:flex-row flex-col">
       <div>
+      <p>Thank You for Visiting!</p>
+
         <p>&copy;2024 Silly Questions | All Rights Reserved</p>
         <p className="flex items-center">
           Made with &#10084; by
