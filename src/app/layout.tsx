@@ -8,8 +8,8 @@ import { Toaster } from "sonner";
 const inter = Inter({ subsets: ["latin"] });
 const bricolage = Bricolage_Grotesque({subsets: ['latin'], weight: ['500', '800']})
 export const metadata: Metadata = {
-  title: "EZ Application",
-  description: "Don't Write Your Applications, Let AI Do it",
+  title: "Silly Question",
+  description: "Ask Silly Questions that increases your Twitter Engagements!",
 };
 
 export default function RootLayout({
