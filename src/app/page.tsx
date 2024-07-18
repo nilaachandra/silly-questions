@@ -41,7 +41,7 @@ export default function Home() {
   const SkeletonLoader = () => (
     <div className="space-y-4 mt-4 w-full">
       {[...Array(5)].map((_, index) => (
-        <Skeleton className="w-full h-12 rounded-lg bg-zinc-500"/>
+        <Skeleton key={index} className="w-full h-12 rounded-lg bg-zinc-500"/>
       ))}
     </div>
   );
