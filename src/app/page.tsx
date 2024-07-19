@@ -41,7 +41,7 @@ export default function Home() {
   const SkeletonLoader = () => (
     <div className="space-y-4 mt-4 w-full">
       {[...Array(5)].map((_, index) => (
-        <Skeleton key={index} className="w-full h-12 rounded-lg bg-zinc-500"/>
+        <Skeleton key={index} className="w-full h-12 rounded-lg bg-zinc-500" />
       ))}
     </div>
   );
@@ -49,16 +49,19 @@ export default function Home() {
   return (
     <div className="lg:min-h-[80vh] min-h-[50vh] mt-4 flex flex-col justify-center items-center">
       <h1 className="lg:text-6xl text-3xl font-bold text-center tracking-tight">
-        Ask Silly Questions that increases your Twitter Engagements!
+        Ask <span className="text-pink-500 font-extrabold">Silly Questions</span> that
+        increases your{" "}
+        <span className="text-blue-500 font-extrabold">Twitter Engagements!</span>{" "}
+        
       </h1>
-      <p className="text-sm text-center tracking-tight mt-6">
+      <p className="text-sm text-center tracking-tight mt-6" >
         Generate 100% engagement guaranteed questions to get more engagements.
         Click on generate, copy, tweet and see your Twitter engagements go brrrr
         🚀
       </p>
       <div
         className={cn(
-          "group rounded-lg border mt-4 border-black/5 bg-blue-600 text-base text-black transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800"
+          "group rounded-lg border mt-4 mb-4 border-black/5 bg-blue-600 text-base text-black transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800"
         )}
         onClick={() => getTweets()}
       >
@@ -80,7 +83,10 @@ export default function Home() {
         tweets.length > 0 && (
           <div className="space-y-4 mt-4 w-full">
             {tweets.slice(0, 5).map((tweet, index) => (
-              <div key={index} className="bg-white w-full text-black flex justify-between items-center px-3 py-4 rounded-lg">
+              <div
+                key={index}
+                className="bg-white w-full text-black flex justify-between items-center px-3 py-4 rounded-lg"
+              >
                 <p className="w-[75%]">{tweet}</p>
                 <Button onClick={() => copyToClipboard(tweet)}>Copy</Button>
               </div>
