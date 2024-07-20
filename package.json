@@ -17,6 +17,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.7",
     "next": "14.2.5",
+    "posthog-js": "^1.148.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.2.1",

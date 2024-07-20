@@ -66,15 +66,15 @@ export default function Home() {
         onClick={() => getTweets()}
       >
         {loading ? (
-          <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out text-white hover:text-black hover:duration-300 hover:dark:text-neutral-400">
+          <Button disabled={loading} className="inline-flex items-center justify-center px-4 py-1 transition ease-out text-white hover:text-black hover:duration-300 hover:dark:text-neutral-400">
             <span>✨ Generating</span>
-            <ReloadIcon className="ml-2 mt-1 h-4 w-4 animate-spin" />
-          </AnimatedShinyText>
+            <ReloadIcon className="ml-2 h-4 w-4 animate-spin" />
+          </Button>
         ) : (
-          <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out text-white hover:text-black hover:duration-300 hover:dark:text-neutral-400">
+          <Button className="inline-flex items-center justify-center px-4 py-1 transition ease-out text-white hover:text-black hover:duration-300 hover:dark:text-neutral-400">
             <span>✨ Generate</span>
             <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-          </AnimatedShinyText>
+          </Button>
         )}
       </div>
       {loading ? (
