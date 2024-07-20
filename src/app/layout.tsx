@@ -12,6 +12,10 @@ const bricolage = Bricolage_Grotesque({subsets: ['latin'], weight: ['500', '800'
 export const metadata: Metadata = {
   title: "Silly Question",
   description: "Ask Silly Questions that increases your Twitter Engagements!",
+  icons: {
+    icon: ["sillyquestions.png"],
+    shortcut: ["sillyquestions.png"],
+  },
 };
 const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
   ssr: false,

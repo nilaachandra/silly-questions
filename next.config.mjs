@@ -1,8 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['pbs.twimg.com'],
-      },
+        remotePatterns: [
+         {
+             hostname: 'scontent-ccu1-1.cdninstagram.com',
+             protocol: "https",
+         }
+        ]
+     }
 };
 
 export default nextConfig;
