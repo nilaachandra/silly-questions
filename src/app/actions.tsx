@@ -12,8 +12,6 @@ const groq = createOpenAI({
 const systemPrompt = `"you are a twitter user who ask silly tech questions related to programming as tweet for engagement. So when an user inputs "generate" as prompt you give them 5 silly questions for example "react or vue?", "tailwind or bootstrap" in JSON format."`;
 
 export async function generateQuestions() {
-  "use server";
-
   const {
     object: data,
     warnings,
