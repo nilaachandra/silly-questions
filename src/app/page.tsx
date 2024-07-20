@@ -1,6 +1,5 @@
 "use client";
 
-import AnimatedShinyText from "@/components/magicui/animated-shiny-text";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ArrowRightIcon, ReloadIcon } from "@radix-ui/react-icons";
@@ -8,6 +7,19 @@ import { useState } from "react";
 import { generateQuestions } from "./actions";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
+import { LuClipboardCopy, LuShare } from "react-icons/lu";
+import { FaRegCommentDots, FaRetweet } from "react-icons/fa6";
+import { GoHeart } from "react-icons/go";
+import { IoBookmarkOutline } from "react-icons/io5";
+import AvatarCircles from "@/components/magicui/avatar-circles";
+
+
+const avatarUrls = [
+  "https://avatars.githubusercontent.com/u/16860528",
+  "https://avatars.githubusercontent.com/u/20110627",
+  "https://avatars.githubusercontent.com/u/106103625",
+  "https://avatars.githubusercontent.com/u/59228569",
+];
 
 export default function Home() {
   const [loading, setLoading] = useState<boolean>(false);
@@ -41,7 +53,7 @@ export default function Home() {
   const SkeletonLoader = () => (
     <div className="space-y-4 mt-4 w-full">
       {[...Array(5)].map((_, index) => (
-        <Skeleton key={index} className="w-full h-12 rounded-lg bg-zinc-500" />
+        <Skeleton key={index} className="w-full h-32 rounded-lg bg-zinc-500" />
       ))}
     </div>
   );
@@ -49,16 +61,23 @@ export default function Home() {
   return (
     <div className="lg:min-h-[80vh] min-h-[50vh] mt-4 flex flex-col justify-center items-center">
       <h1 className="lg:text-6xl text-3xl font-bold text-center tracking-tight">
-        Ask <span className="text-pink-500 font-extrabold">Silly Questions</span> that
-        increases your{" "}
-        <span className="text-blue-500 font-extrabold">Twitter Engagements!</span>{" "}
-        
+        Ask{" "}
+        <span className="text-pink-500 font-extrabold">Silly Questions</span>{" "}
+        that increases your{" "}
+        <span className="text-blue-500 font-extrabold">
+          Twitter Engagements!
+        </span>{" "}
       </h1>
-      <p className="text-sm text-center tracking-tight mt-6" >
+      <p className="text-sm text-center tracking-tight mt-6">
         Generate 100% engagement guaranteed questions to get more engagements.
         Click on generate, copy, tweet and see your Twitter engagements go brrrr
         🚀
       </p>
+      <AvatarCircles numPeople={27} avatarUrls={avatarUrls} className="my-3"/>
+      <p className="text-sm">Used by Pro Question Askers!</p>
+      <p className="text-sm">696+ Questions Generated!</p>
+
+
       <div
         className={cn(
           "group rounded-lg border mt-4 mb-4 border-black/5 bg-blue-600 text-base text-black transition-all ease-in hover:cursor-pointer hover:bg-neutral-200 dark:border-white/5 dark:bg-neutral-900 dark:hover:bg-neutral-800"
@@ -66,7 +85,10 @@ export default function Home() {
         onClick={() => getTweets()}
       >
         {loading ? (
-          <Button disabled={loading} className="inline-flex items-center justify-center px-4 py-1 transition ease-out text-white hover:text-black hover:duration-300 hover:dark:text-neutral-400">
+          <Button
+            disabled={loading}
+            className="inline-flex items-center justify-center px-4 py-1 transition ease-out text-white hover:text-black hover:duration-300 hover:dark:text-neutral-400"
+          >
             <span>✨ Generating</span>
             <ReloadIcon className="ml-2 h-4 w-4 animate-spin" />
           </Button>
@@ -83,17 +105,54 @@ export default function Home() {
         tweets.length > 0 && (
           <div className="space-y-4 mt-4 w-full">
             {tweets.slice(0, 5).map((tweet, index) => (
-              <div
-                key={index}
-                className="bg-white w-full text-black flex justify-between items-center px-3 py-4 rounded-lg"
-              >
-                <p className="w-[75%]">{tweet}</p>
-                <Button onClick={() => copyToClipboard(tweet)}>Copy</Button>
+              <div key={index} className="bg-zinc-200 w-full text-black flex flex-col justify-between items-center px-4 py-4 rounded-xl">
+              <div className="row1 w-full flex justify-between items-center">
+                <div className="profile w-full flex gap-2 items-center">
+                  <div className="rounded-full w-12 h-12 bg-slate-600"></div>
+                  <div className="name">
+                    <h1 className="leading-tight font-bold text-lg hover:underline">Nilaa Laishram</h1>
+                    <h1 className="leading-tight text-zinc-700">@nilaacodes</h1>
+                  </div>
+                </div>
+                <div onClick={() => copyToClipboard(tweet)} className="copy flex p-1 rounded-lg items-center gap-1 cursor-pointer transition-all duration-200 hover:text-blue-500">
+                  <LuClipboardCopy size={18} />
+                  <span>Copy</span>
+                </div>
               </div>
+              <div className="tweet w-full mt-2">
+                <p className="text-left ">
+                  {tweet}
+                </p>
+                <div className="time mt-1">
+                  <p className="text-zinc-700 text-sm">
+                    <span className="hover:underline">10:04 PM • July 19, 2024 </span>• 270K Views
+                  </p>
+                </div>
+              </div>
+              <div className="button mt-3 flex justify-between items-center w-full">
+                <div className="flex gap-1 items-center transition-all duration-200 hover:text-blue-500">
+                  <FaRegCommentDots size={25} className="cursor-pointer " /> <span>6.9K</span>
+                </div>
+                <div className="flex gap-1 items-center transition-all duration-200 hover:text-green-700">
+                  <FaRetweet size={25} className="cursor-pointer" /> <span>696</span>
+                </div>
+                <div className="flex gap-1 items-center transition-all duration-200 hover:text-red-600">
+                  <GoHeart size={25} className="cursor-pointer" /><span>69K</span>
+                </div>
+                <div className="flex gap-1 items-center transition-all duration-200 hover:text-blue-500">
+                  <IoBookmarkOutline size={25} className="cursor-pointer" /><span>27k</span>
+                </div>
+                <div className="flex gap-1 items-center transition-all duration-200 hover:text-blue-500">
+                  <LuShare size={25} className="cursor-pointer" />
+                </div>
+              </div>
+            </div>
             ))}
           </div>
         )
       )}
+
+      
     </div>
   );
 }
